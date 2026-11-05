@@ -1,10 +1,10 @@
 package com.decoverri.pftreasuregeneratorkotlin
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.decoverri.pftreasuregeneratorkotlin.ui.TypeSelectionScreen
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
 
 enum class TreasureGeneratorScreen{
@@ -26,7 +27,7 @@ enum class TreasureGeneratorScreen{
 fun TreasureGeneratorAppBar(
     modifier: Modifier = Modifier
 ) {
-    TopAppBar(
+    CenterAlignedTopAppBar(
         title = { Text(stringResource(R.string.treasure)) },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -50,7 +51,7 @@ fun TreasureGeneratorApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = TreasureGeneratorScreen.TypeSelection.name) {
-
+                TypeSelectionScreen()
             }
         }
     }

@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">PF Treasure Generator Kotlin</string>
-    <string name="treasure">Treasure</string>
+    <string name="treasure">Treasure Generator</string>
     <string name="back_button">Back</string>
+    <string name="coins">Coins</string>
+    <string name="coins_and_gems">Coins and Gems</string>
+    <string name="art_objects">Art Objects</string>
+    <string name="coins_and_small_objects">Coins and Small Objects</string>
+    <string name="armor_and_weapons">Armor and Weapons</string>
+    <string name="combatant_gear">Combatant Gear</string>
+    <string name="spellcaster_gear">Spellcaster Gear</string>
+    <string name="lair_treasure">Lair Treasure</string>
+    <string name="treasure_hoard">Treasure Hoard</string>
 </resources>
