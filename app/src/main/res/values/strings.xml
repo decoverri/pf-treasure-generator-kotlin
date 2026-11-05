@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PF Treasure Generator Kotlin</string>
+    <string name="treasure">Treasure</string>
+    <string name="back_button">Back</string>
 </resources>
