@@ -1,5 +1,6 @@
 package com.decoverri.pftreasuregeneratorkotlin.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,11 +18,13 @@ import androidx.compose.ui.unit.dp
 import com.decoverri.pftreasuregeneratorkotlin.data.Datasource
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
 
+private const val TAG = "ValueScreen"
 @Composable
 fun ValueSelectionScreen(
     values: List<Int>,
     modifier: Modifier = Modifier
 ) {
+    Log.d(TAG, "List of values is $values")
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),

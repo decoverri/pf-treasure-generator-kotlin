@@ -1,5 +1,6 @@
 package com.decoverri.pftreasuregeneratorkotlin
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.decoverri.pftreasuregeneratorkotlin.ui.TreasureGeneratorViewModel
 import com.decoverri.pftreasuregeneratorkotlin.ui.TypeSelectionScreen
+import com.decoverri.pftreasuregeneratorkotlin.ui.ValueSelectionScreen
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
 
 enum class TreasureGeneratorScreen{
@@ -38,6 +40,7 @@ fun TreasureGeneratorAppBar(
     )
 }
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun TreasureGeneratorApp(
     appViewModel: TreasureGeneratorViewModel = viewModel(),
@@ -57,8 +60,12 @@ fun TreasureGeneratorApp(
                 TypeSelectionScreen(
                     onTypeSelecting = { typeIndex ->
                         appViewModel.updateTreasureType(typeIndex)
+                        navController.navigate(TreasureGeneratorScreen.ValueSelection.name)
                     }
                 )
+            }
+            composable(route = TreasureGeneratorScreen.ValueSelection.name) {
+                ValueSelectionScreen(appViewModel.uiState.value.values)
             }
         }
     }

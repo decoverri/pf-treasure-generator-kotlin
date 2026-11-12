@@ -1,6 +1,5 @@
 package com.decoverri.pftreasuregeneratorkotlin.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.decoverri.pftreasuregeneratorkotlin.data.Datasource
 import com.decoverri.pftreasuregeneratorkotlin.data.TreasureSelectionUiState
@@ -16,29 +15,28 @@ class TreasureGeneratorViewModel: ViewModel() {
     val uiState: StateFlow<TreasureSelectionUiState> = _uiState.asStateFlow()
 
     fun updateTreasureType(typeIndex: Int) {
-        val typeList = uiState.value.typeList
+        val typeList = uiState.value.types
 
         if(typeIndex in typeList.indices) {
             _uiState.update { currentState ->
                 currentState.copy(
-                    typeIndex = typeIndex,
-                    valueList = Datasource.treasureValues[typeIndex],
+                    selectedTypeIndex = typeIndex,
+                    values = Datasource.treasureValues[typeIndex],
                     )
             }
         }
     }
 
     fun updateTreasureValue(valueIndex: Int) {
-        val typeIndex = uiState.value.typeIndex
-        val valueList = uiState.value.valueList
+        val typeIndex = uiState.value.selectedTypeIndex
+        val valueList = uiState.value.values
 
         if(
             typeIndex != null &&
-            valueList != null &&
             valueIndex in valueList.indices
             ) {
             _uiState.update { currentState ->
-                currentState.copy(valueIndex = valueIndex)
+                currentState.copy(selectedValueIndex = valueIndex)
             }
         }
     }
