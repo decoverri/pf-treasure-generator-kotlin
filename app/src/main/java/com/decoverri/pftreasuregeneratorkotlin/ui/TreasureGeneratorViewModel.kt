@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 
-const val TAG = "Mydebugssy"
 class TreasureGeneratorViewModel: ViewModel() {
 
     private val _uiState = MutableStateFlow(TreasureSelectionUiState())
