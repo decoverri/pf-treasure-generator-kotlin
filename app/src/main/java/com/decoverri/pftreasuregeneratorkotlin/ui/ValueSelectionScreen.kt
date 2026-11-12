@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.decoverri.pftreasuregeneratorkotlin.data.Datasource
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
+import java.text.NumberFormat
 
 private const val TAG = "ValueScreen"
 @Composable
@@ -48,7 +49,7 @@ fun ValueSelectionItem(
             .fillMaxWidth()
     ) {
         Text(
-            text = "$value gp",
+            text = "${NumberFormat.getNumberInstance().format(value)} gp",
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
