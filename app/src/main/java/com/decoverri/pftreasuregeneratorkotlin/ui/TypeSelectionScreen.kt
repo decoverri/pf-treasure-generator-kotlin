@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.Card
 
 import androidx.compose.runtime.Composable
@@ -23,7 +24,9 @@ import com.decoverri.pftreasuregeneratorkotlin.model.TreasureType
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
 
 @Composable
-fun TypeSelectionScreen() {
+fun TypeSelectionScreen(
+    onTypeSelecting: (Int) -> Unit,
+) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 100.dp),
         contentPadding = PaddingValues(16.dp),
@@ -32,8 +35,11 @@ fun TypeSelectionScreen() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        items(Datasource.treasureTypes) { treasureType ->
-            TypeSelectionCard(treasureType)
+        itemsIndexed(Datasource.treasureTypes) { index, treasureType ->
+            TypeSelectionCard(
+                treasureType,
+                { onTypeSelecting(index) },
+                )
         }
     }
 }
@@ -41,10 +47,11 @@ fun TypeSelectionScreen() {
 @Composable
 fun TypeSelectionCard(
     treasureType: TreasureType,
+    onCardClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
-        onClick = {},
+        onClick = onCardClick,
         modifier = modifier
             .size(120.dp)
     ) {
@@ -62,8 +69,13 @@ fun TypeSelectionCard(
 @Preview
 @Composable
 fun TypeSelectionCardPreview() {
+    val index = 0
+
     PFTreasureGeneratorKotlinTheme {
-        TypeSelectionCard(Datasource.treasureTypes[0])
+        TypeSelectionCard(
+            Datasource.treasureTypes[index],
+            {},
+            )
     }
 }
 
@@ -71,6 +83,8 @@ fun TypeSelectionCardPreview() {
 @Composable
 fun TypeSelectionScreenPreview() {
     PFTreasureGeneratorKotlinTheme {
-        TypeSelectionScreen()
+        TypeSelectionScreen(
+            {}
+        )
     }
 }
