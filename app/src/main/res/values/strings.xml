@@ -11,4 +11,5 @@
     <string name="spellcaster_gear">Spellcaster Gear</string>
     <string name="lair_treasure">Lair Treasure</string>
     <string name="treasure_hoard">Treasure Hoard</string>
+    <string name="choose_the_treasure_type">Choose the treasure type:</string>
 </resources>
