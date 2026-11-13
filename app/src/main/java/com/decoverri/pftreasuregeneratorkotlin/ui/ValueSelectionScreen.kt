@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -30,10 +30,10 @@ fun ValueSelectionScreen(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
     ) {
-        itemsIndexed(values) { index, value ->
+        items(values) { value ->
             ValueSelectionItem(
                 value,
-                onValueClick = { onValueSelecting(index) }
+                onValueClick = { onValueSelecting(value) }
             )
         }
     }
@@ -66,7 +66,7 @@ fun ValueSelectionItem(
 fun ValueSelectionItemPreview() {
     PFTreasureGeneratorKotlinTheme {
         ValueSelectionItem(
-            Datasource.treasureValues[0][0],
+            10000,
             {}
             )
     }
@@ -77,7 +77,7 @@ fun ValueSelectionItemPreview() {
 fun ValueSelectionScreenPreview() {
     PFTreasureGeneratorKotlinTheme {
         ValueSelectionScreen(
-            Datasource.treasureValues[0],
+            Datasource.treasureValues['A'] ?: emptyList(),
             {},
             )
     }

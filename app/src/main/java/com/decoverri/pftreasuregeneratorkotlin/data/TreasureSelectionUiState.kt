@@ -5,8 +5,10 @@ import com.decoverri.pftreasuregeneratorkotlin.model.TreasureType
 
 data class TreasureSelectionUiState(
     val types: List<TreasureType> = Datasource.treasureTypes,
+    val selectedType: TreasureType? = null,
+
     val values: List<Int> = emptyList(),
-    val selectedTypeIndex: Int? = null,
-    val selectedValueIndex: Int? = null,
+    val selectedValue: Int? = null,
+
     val treasures: List<Treasure> = emptyList()
 )

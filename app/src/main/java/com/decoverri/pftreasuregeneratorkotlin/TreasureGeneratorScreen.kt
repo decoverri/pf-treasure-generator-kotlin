@@ -59,8 +59,8 @@ fun TreasureGeneratorApp(
         ) {
             composable(route = TreasureGeneratorScreen.TypeSelection.name) {
                 TypeSelectionScreen(
-                    onTypeSelecting = { typeIndex ->
-                        appViewModel.updateTreasureType(typeIndex)
+                    onTypeSelecting = { type ->
+                        appViewModel.updateTreasureType(type)
                         navController.navigate(TreasureGeneratorScreen.ValueSelection.name)
                     }
                 )
@@ -68,8 +68,8 @@ fun TreasureGeneratorApp(
             composable(route = TreasureGeneratorScreen.ValueSelection.name) {
                 ValueSelectionScreen(
                     appViewModel.uiState.value.values,
-                    onValueSelecting = { valueIndex ->
-                        appViewModel.updateTreasureValue(valueIndex)
+                    onValueSelecting = { value ->
+                        appViewModel.updateTreasureValue(value)
                         navController.navigate(TreasureGeneratorScreen.Treasure.name)
                     }
                 )

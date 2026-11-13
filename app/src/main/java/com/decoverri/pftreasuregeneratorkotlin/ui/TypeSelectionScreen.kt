@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.Card
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -25,7 +23,7 @@ import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotli
 
 @Composable
 fun TypeSelectionScreen(
-    onTypeSelecting: (Int) -> Unit,
+    onTypeSelecting: (TreasureType) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 100.dp),
@@ -35,10 +33,10 @@ fun TypeSelectionScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        itemsIndexed(Datasource.treasureTypes) { index, treasureType ->
+        items(Datasource.treasureTypes) { treasureType ->
             TypeSelectionCard(
                 treasureType,
-                { onTypeSelecting(index) },
+                { onTypeSelecting(treasureType) },
                 )
         }
     }
@@ -69,11 +67,9 @@ fun TypeSelectionCard(
 @Preview
 @Composable
 fun TypeSelectionCardPreview() {
-    val index = 0
-
     PFTreasureGeneratorKotlinTheme {
         TypeSelectionCard(
-            Datasource.treasureTypes[index],
+            Datasource.treasureTypes[0],
             {},
             )
     }
