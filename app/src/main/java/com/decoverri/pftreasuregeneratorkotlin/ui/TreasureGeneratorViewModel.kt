@@ -37,12 +37,10 @@ class TreasureGeneratorViewModel: ViewModel() {
     private fun generateTreasure() {
         _uiState.update {
             it.copy(treasures = listOf(
-                Treasure("You selected ${
-                    NumberFormat.getNumberInstance()
-                        .format(uiState.value.selectedValue ?: 0)
-                } gp worth of treasure type '${
-                    uiState.value.selectedType?.name ?: ""
-                }'")),
+                Treasure(
+                    uiState.value.selectedType?.letter ?: 'A',
+                    uiState.value.selectedValue ?: 0,
+                )),
             )
         }
     }

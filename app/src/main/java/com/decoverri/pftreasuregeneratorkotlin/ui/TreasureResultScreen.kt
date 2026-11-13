@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.decoverri.pftreasuregeneratorkotlin.model.Treasure
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
+import java.text.NumberFormat
 
 @Composable
 fun TreasureResultScreen(
@@ -31,8 +32,11 @@ fun TreasureEntry(
     treasure: Treasure,
     modifier: Modifier = Modifier,
     ) {
+
+    val formattedValue = NumberFormat.getNumberInstance().format(treasure.treasureValue)
+
     Text(
-        text = treasure.description
+        text = "You have selected $formattedValue gp worth of treasure type ${treasure.treasureTypeLetter}"
     )
 }
 
@@ -40,7 +44,7 @@ fun TreasureEntry(
 @Composable
 fun TreasureEntryPreview() {
     PFTreasureGeneratorKotlinTheme {
-        TreasureEntry(Treasure("A little Description"))
+        TreasureEntry(Treasure('A', 10))
     }
 }
 
@@ -49,8 +53,8 @@ fun TreasureEntryPreview() {
 fun TreasureResultScreenPreview() {
     PFTreasureGeneratorKotlinTheme {
         TreasureResultScreen(listOf(
-            Treasure("A Sword!"),
-            Treasure("A Wand!")
+            Treasure('A', 10),
+            Treasure('B', 100),
         ))
     }
 }
