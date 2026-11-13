@@ -1,12 +1,11 @@
 package com.decoverri.pftreasuregeneratorkotlin.ui
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -19,20 +18,23 @@ import com.decoverri.pftreasuregeneratorkotlin.data.Datasource
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
 import java.text.NumberFormat
 
-private const val TAG = "ValueScreen"
+
 @Composable
 fun ValueSelectionScreen(
     values: List<Int>,
-    modifier: Modifier = Modifier
+    onValueSelecting: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Log.d(TAG, "List of values is $values")
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
     ) {
-        items(values) { value ->
-            ValueSelectionItem(value)
+        itemsIndexed(values) { index, value ->
+            ValueSelectionItem(
+                value,
+                onValueClick = { onValueSelecting(index) }
+            )
         }
     }
 }
@@ -40,10 +42,11 @@ fun ValueSelectionScreen(
 @Composable
 fun ValueSelectionItem(
     value: Int,
-    modifier: Modifier = Modifier
+    onValueClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        onClick = {},
+        onClick = onValueClick,
         shape = RoundedCornerShape(4.dp),
         modifier = modifier
             .fillMaxWidth()
@@ -62,7 +65,10 @@ fun ValueSelectionItem(
 @Composable
 fun ValueSelectionItemPreview() {
     PFTreasureGeneratorKotlinTheme {
-        ValueSelectionItem(Datasource.treasureValues[0][0])
+        ValueSelectionItem(
+            Datasource.treasureValues[0][0],
+            {}
+            )
     }
 }
 
@@ -70,6 +76,9 @@ fun ValueSelectionItemPreview() {
 @Composable
 fun ValueSelectionScreenPreview() {
     PFTreasureGeneratorKotlinTheme {
-        ValueSelectionScreen(Datasource.treasureValues[0])
+        ValueSelectionScreen(
+            Datasource.treasureValues[0],
+            {},
+            )
     }
 }

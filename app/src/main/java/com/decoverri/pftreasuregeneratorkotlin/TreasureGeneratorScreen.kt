@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.decoverri.pftreasuregeneratorkotlin.ui.TreasureGeneratorViewModel
+import com.decoverri.pftreasuregeneratorkotlin.ui.TreasureResultScreen
 import com.decoverri.pftreasuregeneratorkotlin.ui.TypeSelectionScreen
 import com.decoverri.pftreasuregeneratorkotlin.ui.ValueSelectionScreen
 import com.decoverri.pftreasuregeneratorkotlin.ui.theme.PFTreasureGeneratorKotlinTheme
@@ -65,7 +66,18 @@ fun TreasureGeneratorApp(
                 )
             }
             composable(route = TreasureGeneratorScreen.ValueSelection.name) {
-                ValueSelectionScreen(appViewModel.uiState.value.values)
+                ValueSelectionScreen(
+                    appViewModel.uiState.value.values,
+                    onValueSelecting = { valueIndex ->
+                        appViewModel.updateTreasureValue(valueIndex)
+                        navController.navigate(TreasureGeneratorScreen.Treasure.name)
+                    }
+                )
+            }
+            composable(route = TreasureGeneratorScreen.Treasure.name) {
+                TreasureResultScreen(
+                    appViewModel.uiState.value.treasures
+                )
             }
         }
     }
