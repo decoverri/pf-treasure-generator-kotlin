@@ -12,3 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 val PrimaryContainer = Color(0xFF0A2232)
 val OnPrimaryContainer = Color(0xFFEA6E29)
+val Background = Color(0xFFEFEFE8)
+val SurfaceContainer = Color(0xFFFFFFFF)
