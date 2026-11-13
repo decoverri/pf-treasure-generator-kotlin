@@ -33,7 +33,7 @@ fun TreasureGeneratorAppBar(
     modifier: Modifier = Modifier
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(stringResource(R.string.treasure)) },
+        title = { Text(stringResource(R.string.treasure).uppercase()) },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ),
